@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "SkuList":"../../components/SkuList/SkuList"
+  },
+  "navigationBarTitleText": "商品详情"
+}

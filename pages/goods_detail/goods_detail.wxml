@@ -1,0 +1,98 @@
+<!-- pages/goods_detail/goods_detail.wxml -->
+<view class="detail_swiper">
+	<swiper autoplay circular indicator-dots>
+		<swiper-item wx:for="{{product.ProductSlideImgs}}" wx:key="pics_id" bindtap="handlePrevewImage" data-url="{{item}}">
+			<image mode="widthFix" src="{{item.CloudUrl}}" />
+		</swiper-item>
+	</swiper>
+</view>
+<view class="goods_price">￥{{product.ProductPrice}}</view>
+<view class="goods_name_row">
+	<view class="goods_name">{{product.ProductTitle}}</view>
+	<view class="goods_collect" bindtap="handleCollect">
+		<text class="iconfont {{isCollect?'icon-shoucang1':'icon-shoucang'}}"></text>
+		<view class="collect_text">收藏</view>
+	</view>
+</view>
+<view class="sku_info_group" bindtap="handleSkuList">
+	<view class="sku_info_left">
+		<view class="title">规格 </view>
+		<view class="sku_info">{{skuDisInfo}}</view>
+		<view class="sku_info">数量：{{num}}</view>
+	</view>
+	<view class="sku_info_right">></view>
+</view>
+<van-tabs active="{{ active }}" bind:change="onChange">
+	<van-tab title="商品介绍">
+		<view class="goods_info">
+			<!-- <view class="goods_info_title">图文详情</view> -->
+			<view class="goods_info_content" wx:for="{{product.ProductDetail}}" wx:key="*this">
+				<!-- 富文本 -->
+				<!-- <rich-text nodes="{{goodsObj.goods_introduce}}"></rich-text> -->
+				<image src="{{item.CloudUrl}}"></image>
+			</view>
+		</view>
+	</van-tab>
+	<van-tab title="商品属性">
+
+	</van-tab>
+	<van-tab title="售后保障">内容 3</van-tab>
+</van-tabs>
+
+<view class="btm_tool">
+	<view class="tool_item">
+		<view class="iconfont icon-kefu"></view>
+		<view>客服</view>
+		<button open-type="contact"></button>
+	</view>
+	<view class="tool_item">
+		<view class="iconfont icon-yixianshi-"></view>
+		<view>分享</view>
+		<button open-type="share"></button>
+	</view>
+	<navigator url="/pages/cart/cart" open-type="switchTab" class="tool_item">
+		<view class="iconfont icon-gouwuche"></view>
+		<view>购物车</view>
+	</navigator>
+	<view class="tool_item btn_cart" bindtap="handleCartAdd">加入购物车</view>
+	<view class="tool_item btn_buy">立即购买</view>
+</view>
+<van-popup show="{{ showSku }}" position="bottom" closeable round close-icon="close" custom-style="height: 70%;" bind:close="onClose">
+	<view class="sku-list">
+		<view class="sku-title">
+			<!-- <image src="{{product.ProductMainImg.CloudUrl}}" /> -->
+			<image src="{{goodObj.Img?goodObj.Img:product.ProductMainImg.CloudUrl}}" />
+			<view class="sku-main">
+				<view>￥{{goodObj.Price?goodObj.Price*num:product.ProductPrice*num}}</view>
+				<text>剩余{{goodObj.Stock?goodObj.Stock:product.ProductStock}}件</text>
+				<view>
+					<text>{{skuDisInfo}} x {{num}}</text>
+				</view>
+
+			</view>
+		</view>
+		<view class="sku-row" wx:for="{{product.ProductSkuValues}}" wx:key="index">
+			<text>{{item.name}}</text>
+			<view class="sku-item">
+				<view class="sku-item-value {{item1.value===item.selectedValue?'active':''}}" wx:for="{{item.values}}" wx:for-item="item1" wx:key="id" bindtap="handleSkuChange" data-attrName="{{item.name}}" data-attrValue="{{item1.value}}">{{item1.value}}</view>
+			</view>
+		</view>
+
+		<view class="sku-num">
+			<text>购买数量</text>
+			<view>
+				<view bindtap="handleItemNumEdit" data-operation="{{-1}}">-</view>
+				<view>{{num}}</view>
+				<view bindtap="handleItemNumEdit" data-operation="{{1}}">+</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="sku-bottom" wx:if="{{isAddCart}}">
+		<button bindtap="handleAffirm">确认</button>
+	</view>
+	<view class="sku-bottom2" wx:else>
+		<button>加入购物车</button>
+		<button>立即购买</button>
+	</view>
+</van-popup>

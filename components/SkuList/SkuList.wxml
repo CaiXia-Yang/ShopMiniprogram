@@ -1,0 +1,12 @@
+<!--components/SkuList/SkuList.wxml-->
+<van-card custom-class="van-card-bg" price="{{price}}" desc="{{selling_intro}}" thumb="{{ img_path }}" curSpec="{{curSpec}}"/>
+          <!-- 规格列表 -->
+          <van-cell wx:for-item="specitem" wx:key="index" wx:for="{{specList}}" title="{{specitem.specName}}" value="" border="{{ false }}" use-label-slot="{{true}}">
+            <view slot="label">
+              <van-radio-group value="{{ specArray[index] }}" data-specId="{{specitem.specId}}" data-index="{{index}}"  bind:change="onChangeSpec">
+                <van-col span="12" wx:key="item" wx:for-item="valitem" wx:for="{{specitem.specValList}}">
+                  <van-radio name="{{specitem.specId}}:{{valitem.specValId}}">{{valitem.specValName}}</van-radio>
+                </van-col>
+              </van-radio-group>
+            </view>
+</van-cell>
