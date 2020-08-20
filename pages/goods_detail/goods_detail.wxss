@@ -78,6 +78,25 @@ page {
   padding-right: 30rpx;
   color: #cccccc;
 }
+.attr_info_group {
+  display: flex;
+  margin: 0 20rpx;
+}
+.attr_info_group .attr_info_left {
+  flex: 3;
+  padding: 20rpx;
+  border: 1rpx #ccc solid;
+}
+.attr_info_group .attr_info_right {
+  flex: 7;
+  padding: 20rpx;
+  border: 1rpx #ccc solid;
+}
+.statement_content {
+  margin: 10rpx;
+  padding: 0 20rpx;
+  color: #999999;
+}
 .goods_info .goods_info_title {
   font-size: 32rpx;
   color: var(--themeColor);
@@ -135,7 +154,7 @@ page {
 }
 .sku-list {
   position: relative;
-  padding: 20rpx 40rpx 150rpx;
+  padding: 20rpx 40rpx 100rpx;
 }
 .sku-list .sku-title {
   display: flex;
@@ -203,58 +222,20 @@ page {
   margin: 4rpx;
 }
 .sku-bottom {
-  text-align: center;
   position: fixed;
-  width: 100%;
-  bottom: 5rpx;
-  padding: 6px 18px;
+  bottom: 0;
+  width: 100vw;
+  height: 100rpx;
+  text-align: center;
+  background: #fff;
+}
+.sku-bottom button {
+  position: fixed;
+  bottom: 10rpx;
   left: 50%;
   transform: translateX(-50%);
-  background: #fff;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #666;
-}
-
-.sku-bottom button {
-  height: 38px;
-  line-height: 38px;
-  border-radius: 21px;
-  box-shadow: 0 3px 6px 0 rgba(255, 65, 66, .2);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-  background: linear-gradient(135deg, #f2140c, #f2270c 70%, #f24d0c);
-}
-.sku-bottom2{
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  bottom: 5rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
- 
-}
-.sku-bottom2 button{
-  margin: 0 20rpx;
-  flex: 1;
-  height: 38px;
-  line-height: 38px;
-  border-radius: 21px;
-  box-shadow: 0 3px 6px 0 rgba(255, 65, 66, .2);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-}
-.sku-bottom2 button:nth-child(1){
-  background: linear-gradient(135deg, #f2140c, #f2270c 70%, #f24d0c);
-}
-.sku-bottom2 button:nth-child(2){
-  background: linear-gradient(135deg,#ffba0d,#ffc30d 69%,#ffcf0d)
+  padding: 0 140rpx;
+  background: -webkit-linear-gradient(left, #FA5A55, #FA994D);
 }
 .active {
   color: var(--themeColor);

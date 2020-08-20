@@ -42,7 +42,8 @@ Page({
     goodObj:{},
     // 是否加入购物车
     isAddCart:true,
-    skuList:[]
+    skuList:[],
+    attrs:{}
   },
   // 改变标签页
   onChange(event) {
@@ -139,19 +140,25 @@ async getGoodsSku(goods_id){
   resData.Product.ProductSlideImgs=JSON.parse(resData.Product.ProductSlideImgs)
   resData.Product.ProductDetail=JSON.parse(resData.Product.ProductDetail)
   resData.Product.ProductSkuValues=JSON.parse(resData.Product.ProductSkuValues)
+
  console.log(resData.Product.ProductMainImg)
   let skuDisInfo="请选择"
   resData.Product.ProductSkuValues.forEach(v=>{
     v.selectedValue=null
     skuDisInfo+=v.name+" "
   })
-
+  resData.Attrs.forEach(v=>{
+    console.log(v.ProductAttrs)
+    v.ProductAttrs=JSON.parse(v.ProductAttrs)
+  })
+  console.log(resData.Attrs)
   this.setData({
     product:resData.Product,
     skus:resData.SkuValues,
     proSkus:resData.Skus,
     skuDisInfo:skuDisInfo,
-    isCollect
+    isCollect,
+    attrs:resData.Attrs
   })
 },
 

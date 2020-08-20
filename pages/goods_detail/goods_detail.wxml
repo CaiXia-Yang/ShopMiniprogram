@@ -23,7 +23,7 @@
 	<view class="sku_info_right">></view>
 </view>
 <van-tabs active="{{ active }}" bind:change="onChange">
-	<van-tab title="商品介绍">
+	<van-tab title="商品介绍"> 
 		<view class="goods_info">
 			<!-- <view class="goods_info_title">图文详情</view> -->
 			<view class="goods_info_content" wx:for="{{product.ProductDetail}}" wx:key="*this">
@@ -34,9 +34,30 @@
 		</view>
 	</van-tab>
 	<van-tab title="商品属性">
+		<van-divider contentPosition="center">商品参数</van-divider>
+		<view class="attr_info_group" wx:for="{{attrs}}" wx:key="attrs.ProductID">
+			<view class="attr_info_left">
+				{{item.ProductAttrs.AttrName}}
+			</view>
+			<view class="attr_info_right">
+				{{item.ProductAttrs.AttrValue}}
+			</view>
+		</view>
 
 	</van-tab>
-	<van-tab title="售后保障">内容 3</van-tab>
+	<van-tab title="售后保障">
+			<van-divider contentPosition="center">权利声明</van-divider>
+			<view class="statement_content">
+				商城上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是商城重要的经营资源，未经许可，禁止非法转载使用。
+			</view>
+			<van-divider contentPosition="center">价格声明</van-divider>
+			<view class="statement_content">
+				商品的销售价，是您最终决定是否购买商品的依据。
+			</view>
+			<view class="statement_content">
+				商品展示的划横线价格为参考价，该价格可能是品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价（如厂商指导价、建议零售价等）或该商品在京东平台上曾经展示过的销售价；由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价等可能会与您购物时展示的不一致，该价格仅供您参考。
+			</view>
+	</van-tab>
 </van-tabs>
 
 <view class="btm_tool">
